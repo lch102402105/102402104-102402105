@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>校园失物招领 · 我的发布</title>
+  <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+  <script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-slate-300 font-sans antialiased">
+  <div class="relative w-full h-full max-w-[393px] max-h-[852px] bg-slate-50 flex flex-col overflow-hidden shadow-2xl">
+    <!-- 顶部 -->
+    <header class="shrink-0 bg-gradient-to-br from-blue-600 to-indigo-600 px-5 pb-6 pt-6 rounded-b-[28px]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-[11px] text-blue-100">校园失物招领</p>
+          <h1 class="mt-1 text-xl font-semibold text-white">我的发布</h1>
+        </div>
+        <a class="flex items-center gap-1 rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-medium text-white" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/publish.html?render_html=true">
+          <iconify-icon class="text-base" icon="mdi:plus"></iconify-icon>发布新信息
+        </a>
+      </div>
+      <div class="mt-4 grid grid-cols-2 gap-3">
+        <div class="rounded-2xl bg-white/12 px-4 py-3">
+          <p class="text-[11px] text-blue-100">进行中</p>
+          <p class="mt-1 text-xl font-semibold text-white"><span id="statActive">3</span><span class="ml-1 text-[11px] font-normal text-blue-100">条</span></p>
+        </div>
+        <div class="rounded-2xl bg-white/12 px-4 py-3">
+          <p class="text-[11px] text-blue-100">已完成</p>
+          <p class="mt-1 text-xl font-semibold text-white"><span id="statDone">1</span><span class="ml-1 text-[11px] font-normal text-blue-100">条</span></p>
+        </div>
+      </div>
+    </header>
+    <!-- 列表区 -->
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-scrollbar px-4 pb-6 pt-4">
+      <!-- 状态筛选 -->
+      <div class="flex items-center gap-2">
+        <button class="rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-medium text-white" data-tab="all" onclick="applyTab('all')" type="button">全部</button>
+        <button class="rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200" data-tab="active" onclick="applyTab('active')" type="button">进行中</button>
+        <button class="rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200" data-tab="done" onclick="applyTab('done')" type="button">已完成</button>
+        <span class="ml-auto text-[11px] text-slate-400" id="tabCount">共 4 条</span>
+      </div>
+      <div class="mt-3 flex flex-col gap-3" id="postList">
+        <!-- 寻物 · 进行中 -->
+        <div class="post-card rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-kind="lost" data-status="active">
+          <div class="flex gap-3">
+            <div class="relative h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-orange-200 flex items-center justify-center">
+              <iconify-icon class="text-3xl text-orange-600/70" icon="mdi:card-account-details-outline"></iconify-icon>
+              <img alt="Blue campus ID card lost in the second canteen" class="absolute inset-0 h-full w-full object-cover" src="/agent-py/media/generated_images/2026-09-26/eeff596c747245f691b513e2d622727c.jpg" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-start justify-between gap-2">
+                <span class="rounded-md bg-orange-50 px-1.5 py-0.5 text-[10px] font-medium text-orange-600 ring-1 ring-orange-100">寻物</span>
+                <span class="shrink-0 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-600" data-role="status">进行中</span>
+              </div>
+              <h3 class="mt-1 truncate text-[14px] font-semibold text-slate-800">校园一卡通（王同学）</h3>
+              <p class="mt-0.5 flex items-center gap-1 truncate text-[11px] text-slate-500">
+                <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>第二食堂二楼 · 昨天 18:40
+              </p>
+              <p class="mt-1 text-[11px] text-slate-400">浏览 128 · 收到 2 条线索</p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 border-t border-slate-100 pt-3">
+            <a class="flex-1 rounded-xl bg-slate-100 py-2 text-center text-[12px] font-medium text-slate-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=2&amp;render_html=true">查看详情</a>
+            <button class="flex-1 rounded-xl bg-blue-600 py-2 text-[12px] font-medium text-white" data-kind="lost" onclick="markDone(this)" type="button">标记已找回</button>
+          </div>
+        </div>
+        <!-- 招领 · 进行中 -->
+        <div class="post-card rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-kind="found" data-status="active">
+          <div class="flex gap-3">
+            <div class="relative h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100 to-teal-200 flex items-center justify-center">
+              <iconify-icon class="text-3xl text-emerald-600/70" icon="mdi:umbrella"></iconify-icon>
+              <img alt="Black long-handled umbrella kept at the library service desk" class="absolute inset-0 h-full w-full object-cover" src="/agent-py/media/generated_images/2026-09-26/4aa818bd2e024e4eafc364668ed7362c.jpg" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-start justify-between gap-2">
+                <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 ring-1 ring-emerald-100">招领</span>
+                <span class="shrink-0 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-600" data-role="status">进行中</span>
+              </div>
+              <h3 class="mt-1 truncate text-[14px] font-semibold text-slate-800">黑色长柄雨伞</h3>
+              <p class="mt-0.5 flex items-center gap-1 truncate text-[11px] text-slate-500">
+                <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>图书馆三楼自习区 · 今天 09:20
+              </p>
+              <p class="mt-1 text-[11px] text-slate-400">浏览 96 · 有 1 人正在认领</p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 border-t border-slate-100 pt-3">
+            <a class="flex-1 rounded-xl bg-slate-100 py-2 text-center text-[12px] font-medium text-slate-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=1&amp;render_html=true">查看详情</a>
+            <button class="flex-1 rounded-xl bg-blue-600 py-2 text-[12px] font-medium text-white" data-kind="found" onclick="markDone(this)" type="button">标记已归还</button>
+          </div>
+        </div>
+        <!-- 招领 · 进行中 -->
+        <div class="post-card rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-kind="found" data-status="active">
+          <div class="flex gap-3">
+            <div class="relative h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-sky-100 to-cyan-200 flex items-center justify-center">
+              <iconify-icon class="text-3xl text-sky-600/70" icon="mdi:headphones"></iconify-icon>
+              <img alt="White wireless earphone charging case found at the gym" class="absolute inset-0 h-full w-full object-cover" src="/agent-py/media/generated_images/2026-09-26/35612f0db18947ae91d6cb4d1e720ae7.jpg" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-start justify-between gap-2">
+                <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 ring-1 ring-emerald-100">招领</span>
+                <span class="shrink-0 rounded-full bg-blue-50 px-2 py-0.5 text-[10px] font-medium text-blue-600" data-role="status">进行中</span>
+              </div>
+              <h3 class="mt-1 truncate text-[14px] font-semibold text-slate-800">白色无线耳机充电盒</h3>
+              <p class="mt-0.5 flex items-center gap-1 truncate text-[11px] text-slate-500">
+                <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>体育馆羽毛球场 3 号场 · 09-25 20:10
+              </p>
+              <p class="mt-1 text-[11px] text-slate-400">浏览 74 · 暂无认领申请</p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 border-t border-slate-100 pt-3">
+            <a class="flex-1 rounded-xl bg-slate-100 py-2 text-center text-[12px] font-medium text-slate-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=3&amp;render_html=true">查看详情</a>
+            <button class="flex-1 rounded-xl bg-blue-600 py-2 text-[12px] font-medium text-white" data-kind="found" onclick="markDone(this)" type="button">标记已归还</button>
+          </div>
+        </div>
+        <!-- 寻物 · 已完成 -->
+        <div class="post-card rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-kind="lost" data-status="done">
+          <div class="flex gap-3">
+            <div class="relative h-[76px] w-[76px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-violet-100 to-purple-200 flex items-center justify-center">
+              <iconify-icon class="text-3xl text-violet-600/70" icon="mdi:bag-personal-outline"></iconify-icon>
+              <img alt="Grey backpack containing a laptop lost on the east playground stand" class="absolute inset-0 h-full w-full object-cover" src="/agent-py/media/generated_images/2026-09-26/288934d9442f4ccb9acd5e58e274078e.jpg" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <div class="flex items-start justify-between gap-2">
+                <span class="rounded-md bg-orange-50 px-1.5 py-0.5 text-[10px] font-medium text-orange-600 ring-1 ring-orange-100">寻物</span>
+                <span class="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500" data-role="status">已找回</span>
+              </div>
+              <h3 class="mt-1 truncate text-[14px] font-semibold text-slate-800">灰色双肩包（内有笔记本）</h3>
+              <p class="mt-0.5 flex items-center gap-1 truncate text-[11px] text-slate-500">
+                <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>东操场看台第三排 · 09-24 17:00
+              </p>
+              <p class="mt-1 text-[11px] text-slate-400">09-25 上午在校保卫处完成归还</p>
+            </div>
+          </div>
+          <div class="mt-3 flex items-center gap-2 border-t border-slate-100 pt-3">
+            <a class="flex-1 rounded-xl bg-slate-100 py-2 text-center text-[12px] font-medium text-slate-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=6&amp;render_html=true">查看详情</a>
+            <button class="flex-1 rounded-xl bg-slate-100 py-2 text-[12px] font-medium text-slate-400" disabled="" type="button">信息已完结</button>
+          </div>
+        </div>
+      </div>
+      <!-- 空状态 -->
+      <div class="is-hidden flex-col items-center justify-center px-6 py-16 text-center" id="emptyState">
+        <div class="flex h-16 w-16 items-center justify-center rounded-full bg-slate-100">
+          <iconify-icon class="text-3xl text-slate-400" icon="mdi:clipboard-text-clock-outline"></iconify-icon>
+        </div>
+        <h3 class="mt-4 text-[15px] font-semibold text-slate-700" id="emptyTitle">这里还没有信息</h3>
+        <p class="mt-1 text-xs leading-relaxed text-slate-400" id="emptyDesc">切换到其他状态看看，或者发布一条新的寻物 / 招领信息。</p>
+        <a class="mt-5 rounded-xl bg-blue-600 px-5 py-2 text-xs font-medium text-white" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/publish.html?render_html=true">发布信息</a>
+      </div>
+      <p class="mt-5 text-center text-[11px] leading-relaxed text-slate-400">
+        信息完结后会自动从首页列表移除<br />如需修改内容，可在详情页重新发布
+      </p>
+    </main>
+    <!-- 底部导航 -->
+    <nav class="shrink-0 border-t border-slate-200 bg-white px-2 pt-1.5 pb-2">
+      <div class="grid grid-cols-4 gap-1">
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/home.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:home-variant"></iconify-icon>
+          <span class="text-[10px] font-medium">首页</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/search.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:magnify"></iconify-icon>
+          <span class="text-[10px] font-medium">搜索</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/publish.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:plus-circle-outline"></iconify-icon>
+          <span class="text-[10px] font-medium">发布</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-blue-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/my-posts.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:clipboard-text"></iconify-icon>
+          <span class="text-[10px] font-medium">我的</span>
+        </a>
+      </div>
+    </nav>
+    <!-- 轻提示 -->
+    <div class="is-hidden absolute left-1/2 top-28 z-40 -translate-x-1/2 whitespace-nowrap rounded-xl bg-slate-800/90 px-4 py-2 text-[12px] text-white shadow-lg" id="toast">
+      已标记
+    </div>
+  </div>
+  <script>
+    var TAB_ON = 'rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-medium text-white';
+    var TAB_OFF = 'rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200';
+    var currentTab = 'all';
+    var toastTimer = null;
+
+    function applyTab(tab) {
+      currentTab = tab;
+      var chips = document.querySelectorAll('[data-tab]');
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].className = chips[i].getAttribute('data-tab') === tab ? TAB_ON : TAB_OFF;
+      }
+
+      var cards = document.querySelectorAll('.post-card');
+      var visible = 0;
+      for (var j = 0; j < cards.length; j++) {
+        var ok = tab === 'all' || cards[j].getAttribute('data-status') === tab;
+        if (ok) {
+          cards[j].classList.remove('is-hidden');
+          visible++;
+        } else {
+          cards[j].classList.add('is-hidden');
+        }
+      }
+
+      var empty = document.getElementById('emptyState');
+      if (visible === 0) {
+        empty.classList.remove('is-hidden');
+        document.getElementById('emptyTitle').textContent = tab === 'active' ? '没有进行中的信息' : '还没有已完结的信息';
+        document.getElementById('emptyDesc').textContent = tab === 'active' ?
+          '你发布的寻物与招领信息都已完结，感谢你的每一次接力。' :
+          '物品归还后，记得回到这里把信息标记为已找回 / 已归还。';
+      } else {
+        empty.classList.add('is-hidden');
+      }
+
+      document.getElementById('tabCount').textContent = tab === 'all' ? ('共 ' + visible + ' 条') : (visible + ' 条信息');
+    }
+
+    function updateStats() {
+      var cards = document.querySelectorAll('.post-card');
+      var active = 0;
+      var done = 0;
+      for (var i = 0; i < cards.length; i++) {
+        if (cards[i].getAttribute('data-status') === 'done') {
+          done++;
+        } else {
+          active++;
+        }
+      }
+      document.getElementById('statActive').textContent = active;
+      document.getElementById('statDone').textContent = done;
+    }
+
+    function showToast(text) {
+      var toast = document.getElementById('toast');
+      toast.textContent = text;
+      toast.classList.remove('is-hidden');
+      if (toastTimer) {
+        clearTimeout(toastTimer);
+      }
+      toastTimer = setTimeout(function() {
+        toast.classList.add('is-hidden');
+      }, 2000);
+    }
+
+    function markDone(btn) {
+      var card = btn.closest('[data-status]');
+      if (!card || card.getAttribute('data-status') === 'done') {
+        return;
+      }
+
+      var kind = btn.getAttribute('data-kind');
+      card.setAttribute('data-status', 'done');
+
+      var badge = card.querySelector('[data-role="status"]');
+      badge.textContent = kind === 'lost' ? '已找回' : '已归还';
+      badge.className = 'shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-500';
+
+      btn.textContent = '信息已完结';
+      btn.className = 'flex-1 rounded-xl bg-slate-100 py-2 text-[12px] font-medium text-slate-400';
+      btn.disabled = true;
+
+      updateStats();
+      applyTab(currentTab);
+      showToast(kind === 'lost' ? '已标记为「已找回」' : '已标记为「已归还」');
+    }
+
+    updateStats();
+    applyTab('all');
+  </script>
+</body>
+
+</html>

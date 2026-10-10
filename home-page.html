@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>校园失物招领 · 首页</title>
+  <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+  <script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-slate-300 font-sans antialiased">
+  <div class="relative w-full h-full max-w-[393px] max-h-[852px] bg-slate-50 flex flex-col overflow-hidden shadow-2xl">
+    <!-- 顶部区域 -->
+    <header class="shrink-0 bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-600 px-5 pt-6 pb-6 rounded-b-[28px]">
+      <div class="flex items-start justify-between">
+        <div>
+          <p class="text-[11px] text-blue-100">2026 秋季学期 · 校园服务中心</p>
+          <h1 class="mt-1 text-xl font-semibold text-white">失物招领</h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <a class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center text-white" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/my-posts.html?render_html=true">
+            <iconify-icon class="text-xl" icon="mdi:account-outline"></iconify-icon>
+          </a>
+          <button class="relative w-9 h-9 rounded-full bg-white/15 flex items-center justify-center text-white" type="button">
+            <iconify-icon class="text-xl" icon="mdi:bell-outline"></iconify-icon>
+            <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-amber-400"></span>
+          </button>
+        </div>
+      </div>
+      <a class="mt-4 flex items-center gap-2 rounded-xl bg-white px-3.5 py-2.5 shadow-sm" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/search.html?render_html=true">
+        <iconify-icon class="text-lg text-slate-400" icon="mdi:magnify"></iconify-icon>
+        <span class="text-[13px] text-slate-400">搜索物品名称、地点，如“雨伞 图书馆”</span>
+      </a>
+      <div class="mt-3 flex items-center gap-4 text-[11px] text-blue-50">
+        <span class="flex items-center gap-1">
+          <iconify-icon class="text-[7px] text-amber-300" icon="mdi:circle"></iconify-icon>今日新增 12 条
+        </span>
+        <span class="flex items-center gap-1">
+          <iconify-icon class="text-[7px] text-emerald-300" icon="mdi:circle"></iconify-icon>待认领 38 条
+        </span>
+      </div>
+    </header>
+    <!-- 主内容 -->
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-scrollbar px-4 pb-6">
+      <!-- 分类标签 -->
+      <div class="sticky top-0 z-20 -mx-4 bg-slate-50/95 px-4 pt-3 pb-2 backdrop-blur">
+        <div class="flex items-center gap-2">
+          <button class="flex items-center gap-1 rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-medium text-white shadow-sm" data-chip="all" onclick="filterCards(this,'all')" type="button">
+            全部
+          </button>
+          <button class="flex items-center gap-1 rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200" data-chip="lost" onclick="filterCards(this,'lost')" type="button">
+            寻物
+          </button>
+          <button class="flex items-center gap-1 rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200" data-chip="found" onclick="filterCards(this,'found')" type="button">
+            招领
+          </button>
+          <span class="ml-auto text-[11px] text-slate-400" id="countText">共 6 条信息</span>
+        </div>
+      </div>
+      <!-- 信息卡片列表 -->
+      <div class="mt-1 flex flex-col gap-3" id="cardList">
+        <a class="card-item flex gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-type="found" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=1&amp;render_html=true">
+          <div class="relative w-[92px] h-[92px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-emerald-100 to-teal-200 flex items-center justify-center">
+            <iconify-icon class="text-4xl text-emerald-600/70" icon="mdi:umbrella"></iconify-icon>
+            <img alt="Black long-handled umbrella picked up in the library study area" class="absolute inset-0 w-full h-full object-cover" src="/agent-py/media/generated_images/2026-09-26/d93b0f82b525415eabe5aca1a93231ac.jpg" />
+          </div>
+          <div class="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <div class="flex items-center gap-2">
+              <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 ring-1 ring-emerald-100">招领</span>
+              <span class="text-[11px] text-slate-400">今天 09:20</span>
+            </div>
+            <h3 class="mt-1 truncate text-[15px] font-semibold text-slate-800">黑色长柄雨伞</h3>
+            <p class="mt-0.5 flex items-center gap-1 truncate text-xs text-slate-500">
+              <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>图书馆三楼自习区
+            </p>
+            <div class="mt-1 flex items-center justify-between">
+              <span class="truncate text-[11px] text-slate-400">张同学 · 信息已核验</span>
+              <span class="flex shrink-0 items-center text-[11px] font-medium text-blue-600">详情<iconify-icon class="text-sm" icon="mdi:chevron-right"></iconify-icon></span>
+            </div>
+          </div>
+        </a>
+        <a class="card-item flex gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-type="lost" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=2&amp;render_html=true">
+          <div class="relative w-[92px] h-[92px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-orange-200 flex items-center justify-center">
+            <iconify-icon class="text-4xl text-orange-600/70" icon="mdi:card-account-details-outline"></iconify-icon>
+            <img alt="Blue campus ID card lost in the second canteen" class="absolute inset-0 w-full h-full object-cover" src="/agent-py/media/generated_images/2026-09-26/69cabba11bb340a9bdee0308692b64f3.jpg" />
+          </div>
+          <div class="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <div class="flex items-center gap-2">
+              <span class="rounded-md bg-orange-50 px-1.5 py-0.5 text-[10px] font-medium text-orange-600 ring-1 ring-orange-100">寻物</span>
+              <span class="text-[11px] text-slate-400">昨天 18:40</span>
+            </div>
+            <h3 class="mt-1 truncate text-[15px] font-semibold text-slate-800">校园一卡通（王同学）</h3>
+            <p class="mt-0.5 flex items-center gap-1 truncate text-xs text-slate-500">
+              <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>第二食堂二楼
+            </p>
+            <div class="mt-1 flex items-center justify-between">
+              <span class="truncate text-[11px] text-slate-400">王同学 · 计算机学院</span>
+              <span class="flex shrink-0 items-center text-[11px] font-medium text-blue-600">详情<iconify-icon class="text-sm" icon="mdi:chevron-right"></iconify-icon></span>
+            </div>
+          </div>
+        </a>
+        <a class="card-item flex gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-type="found" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=3&amp;render_html=true">
+          <div class="relative w-[92px] h-[92px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-sky-100 to-cyan-200 flex items-center justify-center">
+            <iconify-icon class="text-4xl text-sky-600/70" icon="mdi:headphones"></iconify-icon>
+            <img alt="White wireless earphone charging case found at the gym" class="absolute inset-0 w-full h-full object-cover" src="/agent-py/media/generated_images/2026-09-26/f5353032fd6c403ca322eb8be4526ea3.jpg" />
+          </div>
+          <div class="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <div class="flex items-center gap-2">
+              <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 ring-1 ring-emerald-100">招领</span>
+              <span class="text-[11px] text-slate-400">09-25 20:10</span>
+            </div>
+            <h3 class="mt-1 truncate text-[15px] font-semibold text-slate-800">白色无线耳机充电盒</h3>
+            <p class="mt-0.5 flex items-center gap-1 truncate text-xs text-slate-500">
+              <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>体育馆羽毛球场 3 号场
+            </p>
+            <div class="mt-1 flex items-center justify-between">
+              <span class="truncate text-[11px] text-slate-400">李同学 · 体育学院</span>
+              <span class="flex shrink-0 items-center text-[11px] font-medium text-blue-600">详情<iconify-icon class="text-sm" icon="mdi:chevron-right"></iconify-icon></span>
+            </div>
+          </div>
+        </a>
+        <a class="card-item flex gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-type="lost" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=4&amp;render_html=true">
+          <div class="relative w-[92px] h-[92px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center">
+            <iconify-icon class="text-4xl text-indigo-600/70" icon="mdi:cup-outline"></iconify-icon>
+            <img alt="Blue stainless steel thermos cup left in teaching building A" class="absolute inset-0 w-full h-full object-cover" src="/agent-py/media/generated_images/2026-09-26/0d501ea30c6449709d70693d170640db.jpg" />
+          </div>
+          <div class="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <div class="flex items-center gap-2">
+              <span class="rounded-md bg-orange-50 px-1.5 py-0.5 text-[10px] font-medium text-orange-600 ring-1 ring-orange-100">寻物</span>
+              <span class="text-[11px] text-slate-400">09-25 12:30</span>
+            </div>
+            <h3 class="mt-1 truncate text-[15px] font-semibold text-slate-800">蓝色不锈钢保温杯</h3>
+            <p class="mt-0.5 flex items-center gap-1 truncate text-xs text-slate-500">
+              <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>教学楼 A 座 305 教室
+            </p>
+            <div class="mt-1 flex items-center justify-between">
+              <span class="truncate text-[11px] text-slate-400">陈同学 · 外国语学院</span>
+              <span class="flex shrink-0 items-center text-[11px] font-medium text-blue-600">详情<iconify-icon class="text-sm" icon="mdi:chevron-right"></iconify-icon></span>
+            </div>
+          </div>
+        </a>
+        <a class="card-item flex gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-type="found" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=5&amp;render_html=true">
+          <div class="relative w-[92px] h-[92px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-amber-100 to-yellow-200 flex items-center justify-center">
+            <iconify-icon class="text-4xl text-amber-600/70" icon="mdi:key-variant"></iconify-icon>
+            <img alt="Dormitory key ring with a panda charm found near the parcel locker" class="absolute inset-0 w-full h-full object-cover" src="/agent-py/media/generated_images/2026-09-26/481033980d47459ca8b30ff02343629d.jpg" />
+          </div>
+          <div class="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <div class="flex items-center gap-2">
+              <span class="rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 ring-1 ring-emerald-100">招领</span>
+              <span class="text-[11px] text-slate-400">09-24 21:05</span>
+            </div>
+            <h3 class="mt-1 truncate text-[15px] font-semibold text-slate-800">一串宿舍钥匙（熊猫挂件）</h3>
+            <p class="mt-0.5 flex items-center gap-1 truncate text-xs text-slate-500">
+              <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>一号宿舍楼下快递柜旁
+            </p>
+            <div class="mt-1 flex items-center justify-between">
+              <span class="truncate text-[11px] text-slate-400">宿管阿姨 · 一号宿舍</span>
+              <span class="flex shrink-0 items-center text-[11px] font-medium text-blue-600">详情<iconify-icon class="text-sm" icon="mdi:chevron-right"></iconify-icon></span>
+            </div>
+          </div>
+        </a>
+        <a class="card-item flex gap-3 rounded-2xl bg-white p-3 ring-1 ring-slate-100 shadow-sm" data-type="lost" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/detail.html?id=6&amp;render_html=true">
+          <div class="relative w-[92px] h-[92px] shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-violet-100 to-purple-200 flex items-center justify-center">
+            <iconify-icon class="text-4xl text-violet-600/70" icon="mdi:bag-personal-outline"></iconify-icon>
+            <img alt="Grey backpack containing a laptop lost on the east playground stand" class="absolute inset-0 w-full h-full object-cover" src="/agent-py/media/generated_images/2026-09-26/ae050409eae74716bdcf36e1dd753502.jpg" />
+          </div>
+          <div class="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <div class="flex items-center gap-2">
+              <span class="rounded-md bg-orange-50 px-1.5 py-0.5 text-[10px] font-medium text-orange-600 ring-1 ring-orange-100">寻物</span>
+              <span class="text-[11px] text-slate-400">09-24 17:00</span>
+            </div>
+            <h3 class="mt-1 truncate text-[15px] font-semibold text-slate-800">灰色双肩包（内有笔记本）</h3>
+            <p class="mt-0.5 flex items-center gap-1 truncate text-xs text-slate-500">
+              <iconify-icon class="text-sm text-slate-400" icon="mdi:map-marker-outline"></iconify-icon>东操场看台第三排
+            </p>
+            <div class="mt-1 flex items-center justify-between">
+              <span class="truncate text-[11px] text-slate-400">刘同学 · 数学学院</span>
+              <span class="rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">已找回</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <p class="mt-5 text-center text-[11px] leading-relaxed text-slate-400">
+        信息由同学自主发布，请在公共场所当面交接物品<br />校园服务中心 · 二食堂一楼东侧
+      </p>
+    </main>
+    <!-- 底部导航 -->
+    <nav class="shrink-0 border-t border-slate-200 bg-white px-2 pt-1.5 pb-2">
+      <div class="grid grid-cols-4 gap-1">
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-blue-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/home.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:home-variant"></iconify-icon>
+          <span class="text-[10px] font-medium">首页</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/search.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:magnify"></iconify-icon>
+          <span class="text-[10px] font-medium">搜索</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/publish.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:plus-circle-outline"></iconify-icon>
+          <span class="text-[10px] font-medium">发布</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/my-posts.html?render_html=true">
+          <iconify-icon class="text-[22px]" icon="mdi:clipboard-text-outline"></iconify-icon>
+          <span class="text-[10px] font-medium">我的</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+  <script>
+    var CHIP_ON = 'flex items-center gap-1 rounded-full bg-blue-600 px-3.5 py-1.5 text-xs font-medium text-white shadow-sm';
+    var CHIP_OFF = 'flex items-center gap-1 rounded-full bg-white px-3.5 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200';
+
+    function filterCards(btn, type) {
+      var chips = document.querySelectorAll('[data-chip]');
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].className = chips[i] === btn ? CHIP_ON : CHIP_OFF;
+      }
+      var cards = document.querySelectorAll('.card-item');
+      var visible = 0;
+      for (var j = 0; j < cards.length; j++) {
+        var match = type === 'all' || cards[j].getAttribute('data-type') === type;
+        if (match) {
+          cards[j].classList.remove('is-hidden');
+          visible++;
+        } else {
+          cards[j].classList.add('is-hidden');
+        }
+      }
+      document.getElementById('countText').textContent = '共 ' + visible + ' 条信息';
+    }
+  </script>
+</body>
+
+</html>

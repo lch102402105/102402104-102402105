@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>校园失物招领 · 物品详情</title>
+  <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+  <script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-slate-300 font-sans antialiased">
+  <div class="relative w-full h-full max-w-[393px] max-h-[852px] bg-slate-50 flex flex-col overflow-hidden shadow-2xl">
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-scrollbar">
+      <!-- 物品大图 -->
+      <div class="relative h-[248px] w-full overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-200 flex items-center justify-center" id="imageBox">
+        <iconify-icon class="text-[86px] text-emerald-600/50" icon="mdi:umbrella" id="imageIcon"></iconify-icon>
+        <img alt="Black long-handled umbrella kept at the library service desk" class="absolute inset-0 h-full w-full object-cover" id="itemImage" src="/agent-py/media/generated_images/2026-09-26/a352f0644e194349bd0ae75d282ba2fd.jpg" />
+        <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-900/45 to-transparent"></div>
+        <a class="absolute left-4 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/home.html?render_html=true">
+          <iconify-icon class="text-2xl" icon="mdi:chevron-left"></iconify-icon>
+        </a>
+        <button class="absolute right-4 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm" type="button">
+          <iconify-icon class="text-lg" icon="mdi:share-variant-outline"></iconify-icon>
+        </button>
+        <div class="absolute bottom-4 left-4 flex items-center gap-2">
+          <span class="rounded-lg bg-emerald-500 px-2 py-1 text-[11px] font-medium text-white" id="typeBadge">招领</span>
+          <span class="rounded-lg bg-white/90 px-2 py-1 text-[11px] font-medium text-slate-600" id="statusBadge">待认领</span>
+        </div>
+      </div>
+      <!-- 标题区 -->
+      <section class="rounded-t-[24px] -mt-4 relative bg-slate-50 px-4 pt-5 pb-4">
+        <div class="rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+          <h1 class="text-lg font-semibold leading-snug text-slate-800" id="itemTitle">黑色长柄雨伞</h1>
+          <div class="mt-2 flex items-center gap-3 text-[11px] text-slate-400">
+            <span class="flex items-center gap-1" id="publishTime">
+              <iconify-icon class="text-sm" icon="mdi:clock-outline"></iconify-icon>今天 09:20 发布
+            </span>
+            <span class="truncate" id="infoNoShort">编号 LF20260926001</span>
+          </div>
+          <div class="mt-3 flex items-start gap-2 rounded-xl bg-blue-50 px-3 py-2.5">
+            <iconify-icon class="mt-0.5 text-base text-blue-500" icon="mdi:information-outline"></iconify-icon>
+            <p class="text-[11px] leading-relaxed text-blue-700" id="tipText">该物品由发布者保管，认领时请说明物品特征，并在公共场所当面交接。</p>
+          </div>
+        </div>
+      </section>
+      <!-- 详细描述 -->
+      <section class="px-4 pb-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">物品描述</h2>
+        <div class="rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+          <p class="text-[13px] leading-relaxed text-slate-600" id="itemDesc">
+            在三楼靠窗自习区捡到一把黑色长柄雨伞，木质弯钩伞柄，伞面右下角有一处小磨损。已于当天上午交到图书馆一楼服务台登记，可凭具体特征认领。
+          </p>
+        </div>
+      </section>
+      <!-- 地点时间等信息 -->
+      <section class="px-4 pb-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">物品信息</h2>
+        <div class="divide-y divide-slate-100 rounded-2xl bg-white px-4 ring-1 ring-slate-100 shadow-sm">
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:map-marker-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">地点</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoPlace">图书馆三楼自习区</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:calendar-clock"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">时间</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoTime">2026-09-26 09:20</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:tag-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">类别</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoCategory">雨具</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:shield-check-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">编号</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoNo">LF20260926001</span>
+          </div>
+        </div>
+      </section>
+      <!-- 发布者 -->
+      <section class="px-4 pb-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">发布者</h2>
+        <div class="flex items-center gap-3 rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 text-white">
+            <iconify-icon class="text-2xl" icon="mdi:account" id="publisherIcon"></iconify-icon>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="text-[13px] font-medium text-slate-800" id="publisherName">张同学</p>
+            <p class="mt-0.5 truncate text-[11px] text-slate-400" id="publisherMeta">图书馆学生助理 · 已通过校园邮箱验证</p>
+          </div>
+          <span class="shrink-0 rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-medium text-emerald-600">信息已核验</span>
+        </div>
+      </section>
+      <!-- 安全提示 -->
+      <section class="px-4 pb-6">
+        <div class="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
+          <p class="flex items-center gap-1.5 text-[12px] font-medium text-amber-700">
+            <iconify-icon class="text-base" icon="mdi:alert-outline"></iconify-icon>交接提醒
+          </p>
+          <ul class="mt-2 space-y-1.5 text-[11px] leading-relaxed text-amber-700/90">
+            <li>· 请在校内公共场所（如食堂、图书馆服务台）当面交接</li>
+            <li>· 贵重物品请先核实特征，勿提前转账或支付任何费用</li>
+            <li>· 如信息与实际不符，可向校园服务中心反馈核实</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!-- 底部操作栏 -->
+    <div class="shrink-0 border-t border-slate-200 bg-white px-4 pb-3 pt-2.5">
+      <div class="flex items-center gap-3">
+        <button class="flex w-14 flex-col items-center gap-0.5 rounded-xl py-1 text-slate-400" id="favBtn" onclick="toggleFav()" type="button">
+          <iconify-icon class="text-[22px]" icon="mdi:heart-outline"></iconify-icon>
+          <span class="text-[10px]">收藏</span>
+        </button>
+        <button class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-blue-600 py-3 text-sm font-medium text-white shadow-sm" onclick="openContact()" type="button">
+          <iconify-icon class="text-lg" icon="mdi:chat-outline"></iconify-icon>
+          联系发布者
+        </button>
+      </div>
+    </div>
+    <!-- 联系方式弹窗 -->
+    <div class="is-hidden absolute inset-0 z-50 bg-slate-900/50 p-6" id="contactModal">
+      <div class="flex h-full w-full items-center justify-center">
+        <div class="w-full max-w-[320px] rounded-3xl bg-white p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-[15px] font-semibold text-slate-800">联系方式</h3>
+              <p class="mt-0.5 text-[11px] text-slate-400" id="modalSub">黑色长柄雨伞 · 招领</p>
+            </div>
+            <button class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-slate-500" onclick="closeContact()" type="button">
+              <iconify-icon class="text-base" icon="mdi:close"></iconify-icon>
+            </button>
+          </div>
+          <div class="mt-4 space-y-2.5">
+            <div class="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-3">
+              <iconify-icon class="text-lg text-blue-500" icon="mdi:phone-outline"></iconify-icon>
+              <div class="min-w-0 flex-1">
+                <p class="text-[10px] text-slate-400">手机号</p>
+                <p class="text-[13px] font-medium text-slate-800" id="modalPhone">138****6621</p>
+              </div>
+              <button class="rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-blue-600 ring-1 ring-slate-200" onclick="copyValue(this,'phone')" type="button">复制</button>
+            </div>
+            <div class="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-3">
+              <iconify-icon class="text-lg text-emerald-500" icon="mdi:wechat"></iconify-icon>
+              <div class="min-w-0 flex-1">
+                <p class="text-[10px] text-slate-400">微信号</p>
+                <p class="text-[13px] font-medium text-slate-800" id="modalWechat">umbrella_owner</p>
+              </div>
+              <button class="rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-blue-600 ring-1 ring-slate-200" onclick="copyValue(this,'wechat')" type="button">复制</button>
+            </div>
+          </div>
+          <p class="mt-3 text-[11px] leading-relaxed text-slate-400" id="modalTip">
+            联系时请说明在失物招领平台看到该信息，并描述物品特征以便核实。请勿向对方转账。
+          </p>
+          <a class="mt-4 block w-full rounded-xl bg-slate-100 py-2.5 text-center text-[13px] font-medium text-slate-600" href="https://modao.cc/agent-py/workspace/6ab7cab32366cb6ad806541d/lost-and-found.html/search.html?render_html=true">返回搜索看看其他信息</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var DATA = {
+      1: {
+        type: 'found',
+        status: '待认领',
+        title: '黑色长柄雨伞',
+        time: '今天 09:20 发布',
+        no: 'LF20260926001',
+        place: '图书馆三楼自习区',
+        fullTime: '2026-09-26 09:20',
+        category: '雨具',
+        icon: 'mdi:umbrella',
+        tone: 'from-emerald-100 to-teal-200',
+        iconColor: 'text-emerald-600/50',
+        alt: 'Black long-handled umbrella kept at the library service desk',
+        desc: '在三楼靠窗自习区捡到一把黑色长柄雨伞，木质弯钩伞柄，伞面右下角有一处小磨损。已于当天上午交到图书馆一楼服务台登记，可凭具体特征认领。',
+        tip: '该物品已交至图书馆一楼服务台，认领时请说明伞柄材质与伞面磨损位置，并在服务台当面交接。',
+        publisher: '张同学',
+        meta: '图书馆学生助理 · 已通过校园邮箱验证',
+        phone: '138****6621',
+        wechat: 'umbrella_owner'
+      },
+      2: {
+        type: 'lost',
+        status: '寻找中',
+        title: '校园一卡通（王同学）',
+        time: '昨天 18:40 发布',
+        no: 'LF20260925014',
+        place: '第二食堂二楼',
+        fullTime: '2026-09-25 18:40',
+        category: '证件卡片',
+        icon: 'mdi:card-account-details-outline',
+        tone: 'from-amber-100 to-orange-200',
+        iconColor: 'text-orange-600/50',
+        alt: 'Blue campus ID card lost in the second canteen',
+        desc: '昨天傍晚在第二食堂二楼靠窗餐位用餐后，发现一卡通不在口袋里。卡面为蓝色校徽版本，背面贴有一张卡通贴纸，卡号后四位是 0932。卡内余额不多，但补办需要排队，麻烦捡到的同学联系我。',
+        tip: '捡到后可先交到任意食堂服务台，我会尽快前往领取，并当面感谢。',
+        publisher: '王同学',
+        meta: '计算机学院 · 2024 级本科生',
+        phone: '139****3087',
+        wechat: 'wang_lost_card'
+      },
+      3: {
+        type: 'found',
+        status: '待认领',
+        title: '白色无线耳机充电盒',
+        time: '09-25 20:10 发布',
+        no: 'LF20260925108',
+        place: '体育馆羽毛球场 3 号场',
+        fullTime: '2026-09-25 20:10',
+        category: '电子产品',
+        icon: 'mdi:headphones',
+        tone: 'from-sky-100 to-cyan-200',
+        iconColor: 'text-sky-600/50',
+        alt: 'White wireless earphone charging case found at the gym',
+        desc: '打完球收拾场地时，在 3 号场边的长椅上发现一个白色无线耳机充电盒，盒盖内侧有轻微划痕，指示灯正常。已带在身上，可随时约时间归还。',
+        tip: '请在体育馆前台或羽毛球场边当面交接，我会核对配对记录。',
+        publisher: '李同学',
+        meta: '体育学院 · 羽毛球社成员',
+        phone: '137****5512',
+        wechat: 'li_gym_find'
+      },
+      4: {
+        type: 'lost',
+        status: '寻找中',
+        title: '蓝色不锈钢保温杯',
+        time: '09-25 12:30 发布',
+        no: 'LF20260925071',
+        place: '教学楼 A 座 305 教室',
+        fullTime: '2026-09-25 12:30',
+        category: '生活用品',
+        icon: 'mdi:cup-outline',
+        tone: 'from-blue-100 to-indigo-200',
+        iconColor: 'text-indigo-600/50',
+        alt: 'Blue stainless steel thermos cup left in teaching building A',
+        desc: '上午在 A 座 305 上完课后忘记带走保温杯，杯身是深蓝色磨砂不锈钢，500ml，杯盖上贴了一张写有课程表的小标签。中午回去找已经不在座位上了。',
+        tip: '如果捡到，可以放到 A 座一楼管理员室，我下课后去取。',
+        publisher: '陈同学',
+        meta: '外国语学院 · 2023 级本科生',
+        phone: '136****2204',
+        wechat: 'chen_cup305'
+      },
+      5: {
+        type: 'found',
+        status: '待认领',
+        title: '一串宿舍钥匙（熊猫挂件）',
+        time: '09-24 21:05 发布',
+        no: 'LF20260924033',
+        place: '一号宿舍楼下快递柜旁',
+        fullTime: '2026-09-24 21:05',
+        category: '钥匙门禁',
+        icon: 'mdi:key-variant',
+        tone: 'from-amber-100 to-yellow-200',
+        iconColor: 'text-amber-600/50',
+        alt: 'Dormitory key ring with a panda charm found near the parcel locker',
+        desc: '晚上在快递柜旁的地面上捡到一串钥匙，共三把，配有一个熊猫造型挂件和一张超市会员卡。目前存放在一号宿舍值班室，请本人携带学生证前来认领。',
+        tip: '认领时请出示学生证并说明钥匙数量与挂件样式。',
+        publisher: '宿管阿姨',
+        meta: '一号宿舍值班室 · 已登记在册',
+        phone: '0571-88****14',
+        wechat: 'dorm1_service'
+      },
+      6: {
+        type: 'lost',
+        status: '已找回',
+        title: '灰色双肩包（内有笔记本）',
+        time: '09-24 17:00 发布',
+        no: 'LF20260924012',
+        place: '东操场看台第三排',
+        fullTime: '2026-09-24 17:00',
+        category: '箱包',
+        icon: 'mdi:bag-personal-outline',
+        tone: 'from-violet-100 to-purple-200',
+        iconColor: 'text-violet-600/50',
+        alt: 'Grey backpack containing a laptop lost on the east playground stand',
+        desc: '看台看完比赛后把背包忘在了第三排，里面有一台 13 英寸笔记本、充电器和一本实验记录册。已经通过平台联系到捡到的同学，物品已归还，感谢每一位帮忙转发信息的同学。',
+        tip: '该信息已完结，物品于 09-25 上午在校保卫处完成归还。',
+        publisher: '刘同学',
+        meta: '数学学院 · 2022 级本科生',
+        phone: '135****7788',
+        wechat: 'liu_backpack'
+      }
+    };
+
+    var currentId = 1;
+
+    function applyData(d) {
+      document.getElementById('itemImage').setAttribute('alt', d.alt);
+      var box = document.getElementById('imageBox');
+      box.className = 'relative h-[248px] w-full overflow-hidden bg-gradient-to-br ' + d.tone + ' flex items-center justify-center';
+      var icon = document.getElementById('imageIcon');
+      icon.setAttribute('icon', d.icon);
+      icon.className = 'text-[86px] ' + d.iconColor;
+
+      var tb = document.getElementById('typeBadge');
+      if (d.type === 'lost') {
+        tb.textContent = '寻物';
+        tb.className = 'rounded-lg bg-orange-500 px-2 py-1 text-[11px] font-medium text-white';
+      } else {
+        tb.textContent = '招领';
+        tb.className = 'rounded-lg bg-emerald-500 px-2 py-1 text-[11px] font-medium text-white';
+      }
+
+      var sb = document.getElementById('statusBadge');
+      sb.textContent = d.status;
+      sb.className = d.status === '待认领' || d.status === '寻找中' ?
+        'rounded-lg bg-white/90 px-2 py-1 text-[11px] font-medium text-slate-700' :
+        'rounded-lg bg-slate-700/85 px-2 py-1 text-[11px] font-medium text-white';
+
+      document.getElementById('itemTitle').textContent = d.title;
+      document.getElementById('publishTime').innerHTML = '<iconify-icon icon="mdi:clock-outline" class="text-sm"></iconify-icon>' + d.time;
+      document.getElementById('infoNoShort').textContent = '编号 ' + d.no;
+      document.getElementById('tipText').textContent = d.tip;
+      document.getElementById('itemDesc').textContent = d.desc;
+      document.getElementById('infoPlace').textContent = d.place;
+      document.getElementById('infoTime').textContent = d.fullTime;
+      document.getElementById('infoCategory').textContent = d.category;
+      document.getElementById('infoNo').textContent = d.no;
+      document.getElementById('publisherName').textContent = d.publisher;
+      document.getElementById('publisherMeta').textContent = d.meta;
+      document.getElementById('modalSub').textContent = d.title + ' · ' + (d.type === 'lost' ? '寻物' : '招领');
+      document.getElementById('modalPhone').textContent = d.phone;
+      document.getElementById('modalWechat').textContent = d.wechat;
+    }
+
+    var params = new URLSearchParams(window.location.search);
+    var qid = parseInt(params.get('id'), 10);
+    currentId = DATA[qid] ? qid : 1;
+    applyData(DATA[currentId]);
+
+    function toggleFav() {
+      var btn = document.getElementById('favBtn');
+      var icon = btn.querySelector('iconify-icon');
+      if (btn.getAttribute('data-fav') === '1') {
+        btn.setAttribute('data-fav', '0');
+        btn.className = 'flex w-14 flex-col items-center gap-0.5 rounded-xl py-1 text-slate-400';
+        icon.setAttribute('icon', 'mdi:heart-outline');
+      } else {
+        btn.setAttribute('data-fav', '1');
+        btn.className = 'flex w-14 flex-col items-center gap-0.5 rounded-xl py-1 text-rose-500';
+        icon.setAttribute('icon', 'mdi:heart');
+      }
+    }
+
+    function openContact() {
+      document.getElementById('contactModal').classList.remove('is-hidden');
+    }
+
+    function closeContact() {
+      document.getElementById('contactModal').classList.add('is-hidden');
+    }
+
+    function copyValue(btn, key) {
+      var d = DATA[currentId];
+      var text = key === 'phone' ? d.phone : d.wechat;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).catch(function() {});
+      }
+      btn.textContent = '已复制';
+      btn.className = 'rounded-lg bg-emerald-50 px-2.5 py-1 text-[11px] font-medium text-emerald-600 ring-1 ring-emerald-100';
+    }
+  </script>
+</body>
+
+</html>
