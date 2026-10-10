@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>校园失物招领 · 发布信息</title>
+  <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+  <script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-slate-300 font-sans antialiased">
+  <div class="relative w-full h-full max-w-[393px] max-h-[852px] bg-slate-50 flex flex-col overflow-hidden shadow-2xl">
+    <!-- 顶部 -->
+    <header class="shrink-0 border-b border-slate-200 bg-white px-4 pb-3 pt-5">
+      <div class="flex items-center gap-2">
+        <a class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-slate-500" href="index.html">
+          <iconify-icon class="text-2xl" icon="mdi:chevron-left"></iconify-icon>
+        </a>
+        <h1 class="text-base font-semibold text-slate-800">发布信息</h1>
+        <a class="ml-auto text-[13px] font-medium text-blue-600" href="my-posts.html">我的发布</a>
+      </div>
+      <p class="mt-2 pl-1 text-[11px] text-slate-400" id="typeHint">请填写你丢失的物品信息，越详细越容易被找到。</p>
+    </header>
+    <!-- 表单区 -->
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-scrollbar px-4 pb-6 pt-4">
+      <!-- 类型选择 -->
+      <section>
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">信息类型 <span class="text-red-500">*</span></h2>
+        <div class="grid grid-cols-2 gap-3">
+          <button class="rounded-2xl bg-blue-50 p-3 text-left ring-2 ring-blue-500" data-type="lost" id="typeLost" onclick="chooseType(this,'lost')" type="button">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
+              <iconify-icon class="text-lg" icon="mdi:map-marker-question-outline"></iconify-icon>
+            </span>
+            <span class="mt-2 block text-[13px] font-semibold text-slate-800">我丢了东西</span>
+            <span class="mt-0.5 block text-[11px] text-slate-500">发布寻物信息</span>
+          </button>
+          <button class="rounded-2xl bg-white p-3 text-left ring-1 ring-slate-200" data-type="found" id="typeFound" onclick="chooseType(this,'found')" type="button">
+            <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
+              <iconify-icon class="text-lg" icon="mdi:hand-heart-outline"></iconify-icon>
+            </span>
+            <span class="mt-2 block text-[13px] font-semibold text-slate-800">我捡到东西</span>
+            <span class="mt-0.5 block text-[11px] text-slate-500">发布招领信息</span>
+          </button>
+        </div>
+      </section>
+      <!-- 物品照片 -->
+      <section class="mt-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">物品照片（选填，最多 3 张）</h2>
+        <div class="flex items-center gap-3">
+          <button class="flex h-[76px] w-[76px] shrink-0 flex-col items-center justify-center gap-1 rounded-2xl border border-dashed border-slate-300 bg-white text-slate-400" onclick="toggleUploadTip()" type="button">
+            <iconify-icon class="text-2xl" icon="mdi:image-plus-outline"></iconify-icon>
+            <span class="text-[10px]">添加照片</span>
+          </button>
+          <div class="flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-2xl bg-white ring-1 ring-slate-100">
+            <iconify-icon class="text-xl text-slate-200" icon="mdi:image-outline"></iconify-icon>
+          </div>
+          <div class="flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-2xl bg-white ring-1 ring-slate-100">
+            <iconify-icon class="text-xl text-slate-200" icon="mdi:image-outline"></iconify-icon>
+          </div>
+        </div>
+        <p class="is-hidden mt-2 text-[11px] text-blue-600" id="uploadTip">原型演示：图片上传功能将在正式版本开放，当前可先填写文字描述。</p>
+      </section>
+      <!-- 基本信息 -->
+      <section class="mt-4 rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+        <h2 class="text-[13px] font-semibold text-slate-700">基本信息</h2>
+        <div class="mt-3">
+          <label class="text-[12px] text-slate-500" for="titleInput">物品名称 <span class="text-red-500">*</span></label>
+          <input class="mt-1.5 w-full rounded-xl bg-slate-50 px-3.5 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none ring-1 ring-slate-100" id="titleInput" placeholder="例如：黑色长柄雨伞 / 校园一卡通" type="text" />
+          <p class="is-hidden mt-1 text-[11px] text-red-500" id="errTitle">请填写物品名称</p>
+        </div>
+        <div class="mt-3.5">
+          <label class="text-[12px] text-slate-500" for="placeInput">地点 <span class="text-red-500">*</span></label>
+          <input class="mt-1.5 w-full rounded-xl bg-slate-50 px-3.5 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none ring-1 ring-slate-100" id="placeInput" placeholder="例如：图书馆三楼自习区 / 第二食堂二楼" type="text" />
+          <p class="is-hidden mt-1 text-[11px] text-red-500" id="errPlace">请填写物品丢失或拾取的地点</p>
+        </div>
+        <div class="mt-3.5">
+          <label class="text-[12px] text-slate-500" for="timeInput">时间 <span class="text-red-500">*</span></label>
+          <input class="mt-1.5 w-full rounded-xl bg-slate-50 px-3.5 py-2.5 text-[13px] text-slate-700 outline-none ring-1 ring-slate-100" id="timeInput" type="datetime-local" value="2026-09-26T09:20" />
+          <p class="is-hidden mt-1 text-[11px] text-red-500" id="errTime">请选择物品丢失或拾取的时间</p>
+        </div>
+        <div class="mt-3.5">
+          <label class="text-[12px] text-slate-500" for="contactInput">联系方式 <span class="text-red-500">*</span></label>
+          <input class="mt-1.5 w-full rounded-xl bg-slate-50 px-3.5 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none ring-1 ring-slate-100" id="contactInput" placeholder="手机号或微信号，仅对确认认领者可见" type="text" />
+          <p class="is-hidden mt-1 text-[11px] text-red-500" id="errContact">请填写手机号或微信号，便于对方联系你</p>
+        </div>
+        <div class="mt-3.5">
+          <p class="text-[12px] text-slate-500">物品类别（选填）</p>
+          <div class="mt-2 flex flex-wrap gap-2" id="catBox">
+            <button class="rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600" onclick="chooseCat(this)" type="button">雨具</button>
+            <button class="rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600" onclick="chooseCat(this)" type="button">证件卡片</button>
+            <button class="rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600" onclick="chooseCat(this)" type="button">电子产品</button>
+            <button class="rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600" onclick="chooseCat(this)" type="button">生活用品</button>
+            <button class="rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600" onclick="chooseCat(this)" type="button">箱包</button>
+            <button class="rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600" onclick="chooseCat(this)" type="button">钥匙门禁</button>
+          </div>
+        </div>
+      </section>
+      <!-- 补充描述 -->
+      <section class="mt-4 rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+        <label class="text-[13px] font-semibold text-slate-700" for="descInput">补充描述</label>
+        <p class="mt-1 text-[11px] leading-relaxed text-slate-400">补充物品的颜色、品牌、明显特征或包装物，能大幅提高找回概率。</p>
+        <textarea class="mt-2.5 w-full resize-none rounded-xl bg-slate-50 px-3.5 py-2.5 text-[13px] leading-relaxed text-slate-700 placeholder-slate-400 outline-none ring-1 ring-slate-100" id="descInput" placeholder="例如：黑色长柄雨伞，木质弯钩伞柄，伞面右下角有一处小磨损……" rows="4"></textarea>
+      </section>
+      <!-- 发布须知 -->
+      <section class="mt-4 rounded-2xl bg-blue-50 p-4 ring-1 ring-blue-100">
+        <p class="flex items-center gap-1.5 text-[12px] font-medium text-blue-700">
+          <iconify-icon class="text-base" icon="mdi:information-outline"></iconify-icon>发布须知
+        </p>
+        <ul class="mt-2 space-y-1.5 text-[11px] leading-relaxed text-blue-700/90">
+          <li>· 请如实填写信息，虚假信息将被下架处理</li>
+          <li>· 证件类物品建议交至校园服务中心或所属院系办公室</li>
+          <li>· 交接物品请选择校内公共场所，切勿提前转账</li>
+        </ul>
+      </section>
+      <!-- 发布按钮 -->
+      <button class="mt-5 w-full rounded-xl bg-blue-600 py-3.5 text-sm font-medium text-white shadow-sm" onclick="submitPost()" type="button">
+        发布信息
+      </button>
+      <p class="mt-3 text-center text-[11px] leading-relaxed text-slate-400">
+        点击发布即表示你已阅读并同意<br />《校园失物招领信息发布规范》
+      </p>
+    </main>
+    <!-- 底部导航 -->
+    <nav class="shrink-0 border-t border-slate-200 bg-white px-2 pt-1.5 pb-2">
+      <div class="grid grid-cols-4 gap-1">
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="index.html">
+          <iconify-icon class="text-[22px]" icon="mdi:home-variant"></iconify-icon>
+          <span class="text-[10px] font-medium">首页</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="search.html">
+          <iconify-icon class="text-[22px]" icon="mdi:magnify"></iconify-icon>
+          <span class="text-[10px] font-medium">搜索</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-blue-600" href="publish.html">
+          <iconify-icon class="text-[22px]" icon="mdi:plus-circle-outline"></iconify-icon>
+          <span class="text-[10px] font-medium">发布</span>
+        </a>
+        <a class="flex flex-col items-center gap-0.5 rounded-xl py-1.5 text-slate-400" href="my-posts.html">
+          <iconify-icon class="text-[22px]" icon="mdi:clipboard-text-outline"></iconify-icon>
+          <span class="text-[10px] font-medium">我的</span>
+        </a>
+      </div>
+    </nav>
+    <!-- 发布成功弹层 -->
+    <div class="is-hidden absolute inset-0 z-50 bg-slate-900/50 p-6" id="successOverlay">
+      <div class="flex h-full w-full items-center justify-center">
+        <div class="w-full max-w-[320px] rounded-3xl bg-white p-6 text-center">
+          <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-50">
+            <iconify-icon class="text-4xl text-emerald-500" icon="mdi:check-circle"></iconify-icon>
+          </div>
+          <h3 class="mt-4 text-base font-semibold text-slate-800">发布成功</h3>
+          <p class="mt-1.5 text-[12px] leading-relaxed text-slate-500" id="successDesc">你的寻物信息已提交，同学可以在首页和搜索页看到它。</p>
+          <p class="mt-1 text-[11px] text-slate-400" id="successNo">编号 LF20260926001</p>
+          <a class="mt-5 block w-full rounded-xl bg-blue-600 py-2.5 text-[13px] font-medium text-white" href="my-posts.html">查看我的发布</a>
+          <a class="mt-2 block w-full rounded-xl bg-slate-100 py-2.5 text-[13px] font-medium text-slate-600" href="index.html">返回首页</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 数据层/工具 -->
+  <script src="js/store.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    var TYPE_ON = 'rounded-2xl bg-blue-50 p-3 text-left ring-2 ring-blue-500';
+    var TYPE_OFF = 'rounded-2xl bg-white p-3 text-left ring-1 ring-slate-200';
+    var CAT_ON = 'rounded-full bg-blue-600 px-3 py-1.5 text-[11px] font-medium text-white';
+    var CAT_OFF = 'rounded-full bg-slate-100 px-3 py-1.5 text-[11px] text-slate-600';
+    var currentType = 'lost';
+    var currentCat = '';
+
+    function chooseType(btn, type) {
+      currentType = type;
+      document.getElementById('typeLost').className = type === 'lost' ? TYPE_ON : TYPE_OFF;
+      document.getElementById('typeFound').className = type === 'found' ? TYPE_ON : TYPE_OFF;
+      document.getElementById('typeHint').textContent = type === 'lost' ?
+        '请填写你丢失的物品信息，越详细越容易被找到。' :
+        '请填写你捡到的物品信息，方便失主核对特征后认领。';
+      document.getElementById('titleInput').setAttribute('placeholder', type === 'lost' ?
+        '例如：黑色长柄雨伞 / 校园一卡通' :
+        '例如：白色无线耳机充电盒 / 一串钥匙');
+      document.getElementById('descInput').setAttribute('placeholder', type === 'lost' ?
+        '例如：黑色长柄雨伞，木质弯钩伞柄，伞面右下角有一处小磨损……' :
+        '例如：在图书馆三楼自习区捡到，木质弯钩伞柄，已交到一楼服务台……');
+    }
+
+    function chooseCat(btn) {
+      var chips = document.querySelectorAll('#catBox button');
+      var active = btn.getAttribute('data-active') === '1';
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].setAttribute('data-active', '0');
+        chips[i].className = CAT_OFF;
+      }
+      if (active) {
+        currentCat = '';
+      } else {
+        btn.setAttribute('data-active', '1');
+        btn.className = CAT_ON;
+        currentCat = btn.textContent.trim();
+      }
+    }
+
+    function toggleUploadTip() {
+      document.getElementById('uploadTip').classList.toggle('is-hidden');
+    }
+
+    function showError(id, show) {
+      var el = document.getElementById(id);
+      if (show) {
+        el.classList.remove('is-hidden');
+      } else {
+        el.classList.add('is-hidden');
+      }
+    }
+
+    // 改造后的提交：校验通过后调用数据层的 addItem 真正写库
+    function submitPost() {
+      var title   = document.getElementById('titleInput').value.trim();
+      var place   = document.getElementById('placeInput').value.trim();
+      var time    = document.getElementById('timeInput').value;
+      var contact = document.getElementById('contactInput').value.trim();
+      var desc    = document.getElementById('descInput').value.trim();
+
+      // 原有校验保持不变
+      showError('errTitle',   title === '');
+      showError('errPlace',   place === '');
+      showError('errTime',    time === '');
+      showError('errContact', contact === '');
+      if (title === '' || place === '' || time === '' || contact === '') return;
+
+      var record = addItem({
+        type: currentType,
+        title: title,
+        place: place,
+        fullTime: time.replace('T', ' '),
+        time: formatFullTime(time),
+        category: currentCat || '其他',
+        desc: desc,
+        contact: contact,
+        publisher: '我',          // 作业不要求实名
+        meta: '由我发布',
+        phone: contact,
+        wechat: contact
+      });
+
+      document.getElementById('successDesc').textContent = currentType === 'lost' ?
+        '你的寻物信息已提交，同学可以在首页和搜索页看到它。' :
+        '你的招领信息已提交，失主可以核对特征后联系你。';
+      document.getElementById('successNo').textContent = '编号 ' + record.no;
+      document.getElementById('successOverlay').classList.remove('is-hidden');
+    }
+  </script>
+</body>
+
+</html>
