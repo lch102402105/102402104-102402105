@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>校园失物招领 · 物品详情</title>
+  <script src="https://modao.cc/agent-py/static/source/js/tailwindcss.js"></script>
+  <script src="https://modao.cc/agent-py/static/source/js/iconify-icon.min.js"></script>
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="w-full h-full m-0 overflow-hidden flex items-center justify-center bg-slate-300 font-sans antialiased">
+  <div class="relative w-full h-full max-w-[393px] max-h-[852px] bg-slate-50 flex flex-col overflow-hidden shadow-2xl">
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden no-scrollbar">
+      <!-- 物品大图 -->
+      <div class="relative h-[248px] w-full overflow-hidden bg-gradient-to-br from-emerald-100 to-teal-200 flex items-center justify-center" id="imageBox">
+        <iconify-icon class="text-[86px] text-emerald-600/50" icon="mdi:umbrella" id="imageIcon"></iconify-icon>
+        <img alt="" class="absolute inset-0 h-full w-full object-cover" id="itemImage" src="images/placeholder.svg" onerror="this.style.display='none'" />
+        <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-900/45 to-transparent"></div>
+        <a class="absolute left-4 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm" href="index.html">
+          <iconify-icon class="text-2xl" icon="mdi:chevron-left"></iconify-icon>
+        </a>
+        <button class="absolute right-4 top-5 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-slate-700 shadow-sm" type="button">
+          <iconify-icon class="text-lg" icon="mdi:share-variant-outline"></iconify-icon>
+        </button>
+        <div class="absolute bottom-4 left-4 flex items-center gap-2">
+          <span class="rounded-lg bg-emerald-500 px-2 py-1 text-[11px] font-medium text-white" id="typeBadge">招领</span>
+          <span class="rounded-lg bg-white/90 px-2 py-1 text-[11px] font-medium text-slate-600" id="statusBadge">待认领</span>
+        </div>
+      </div>
+      <!-- 标题区 -->
+      <section class="rounded-t-[24px] -mt-4 relative bg-slate-50 px-4 pt-5 pb-4">
+        <div class="rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+          <h1 class="text-lg font-semibold leading-snug text-slate-800" id="itemTitle">黑色长柄雨伞</h1>
+          <div class="mt-2 flex items-center gap-3 text-[11px] text-slate-400">
+            <span class="flex items-center gap-1" id="publishTime">
+              <iconify-icon class="text-sm" icon="mdi:clock-outline"></iconify-icon>今天 09:20 发布
+            </span>
+            <span class="truncate" id="infoNoShort">编号 LF20260926001</span>
+          </div>
+          <div class="mt-3 flex items-start gap-2 rounded-xl bg-blue-50 px-3 py-2.5">
+            <iconify-icon class="mt-0.5 text-base text-blue-500" icon="mdi:information-outline"></iconify-icon>
+            <p class="text-[11px] leading-relaxed text-blue-700" id="tipText">该物品由发布者保管，认领时请说明物品特征，并在公共场所当面交接。</p>
+          </div>
+        </div>
+      </section>
+      <!-- 详细描述 -->
+      <section class="px-4 pb-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">物品描述</h2>
+        <div class="rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+          <p class="text-[13px] leading-relaxed text-slate-600" id="itemDesc">
+            在三楼靠窗自习区捡到一把黑色长柄雨伞，木质弯钩伞柄，伞面右下角有一处小磨损。已于当天上午交到图书馆一楼服务台登记，可凭具体特征认领。
+          </p>
+        </div>
+      </section>
+      <!-- 地点时间等信息 -->
+      <section class="px-4 pb-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">物品信息</h2>
+        <div class="divide-y divide-slate-100 rounded-2xl bg-white px-4 ring-1 ring-slate-100 shadow-sm">
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:map-marker-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">地点</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoPlace">图书馆三楼自习区</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:calendar-clock"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">时间</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoTime">2026-09-26 09:20</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:tag-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">类别</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoCategory">雨具</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:shield-check-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">编号</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoNo">LF20260926001</span>
+          </div>
+          <div class="flex items-center gap-3 py-3">
+            <iconify-icon class="text-lg text-blue-500" icon="mdi:eye-outline"></iconify-icon>
+            <span class="w-14 shrink-0 text-xs text-slate-400">浏览</span>
+            <span class="min-w-0 flex-1 truncate text-[13px] text-slate-700" id="infoViews">96</span>
+          </div>
+        </div>
+      </section>
+      <!-- 发布者 -->
+      <section class="px-4 pb-4">
+        <h2 class="mb-2 text-[13px] font-semibold text-slate-700">发布者</h2>
+        <div class="flex items-center gap-3 rounded-2xl bg-white p-4 ring-1 ring-slate-100 shadow-sm">
+          <div class="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 text-white">
+            <iconify-icon class="text-2xl" icon="mdi:account" id="publisherIcon"></iconify-icon>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="text-[13px] font-medium text-slate-800" id="publisherName">张同学</p>
+            <p class="mt-0.5 truncate text-[11px] text-slate-400" id="publisherMeta">图书馆学生助理 · 已通过校园邮箱验证</p>
+          </div>
+          <span class="shrink-0 rounded-full bg-emerald-50 px-2 py-1 text-[10px] font-medium text-emerald-600">信息已核验</span>
+        </div>
+      </section>
+      <!-- 安全提示 -->
+      <section class="px-4 pb-6">
+        <div class="rounded-2xl bg-amber-50 p-4 ring-1 ring-amber-100">
+          <p class="flex items-center gap-1.5 text-[12px] font-medium text-amber-700">
+            <iconify-icon class="text-base" icon="mdi:alert-outline"></iconify-icon>交接提醒
+          </p>
+          <ul class="mt-2 space-y-1.5 text-[11px] leading-relaxed text-amber-700/90">
+            <li>· 请在校内公共场所（如食堂、图书馆服务台）当面交接</li>
+            <li>· 贵重物品请先核实特征，勿提前转账或支付任何费用</li>
+            <li>· 如信息与实际不符，可向校园服务中心反馈核实</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!-- 底部操作栏 -->
+    <div class="shrink-0 border-t border-slate-200 bg-white px-4 pb-3 pt-2.5">
+      <div class="flex items-center gap-3">
+        <button class="flex w-14 flex-col items-center gap-0.5 rounded-xl py-1 text-slate-400" id="favBtn" onclick="toggleFav()" type="button">
+          <iconify-icon class="text-[22px]" icon="mdi:heart-outline"></iconify-icon>
+          <span class="text-[10px]">收藏</span>
+        </button>
+        <button class="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-blue-600 py-3 text-sm font-medium text-white shadow-sm" onclick="openContact()" type="button">
+          <iconify-icon class="text-lg" icon="mdi:chat-outline"></iconify-icon>
+          联系发布者
+        </button>
+      </div>
+    </div>
+    <!-- 联系方式弹窗 -->
+    <div class="is-hidden absolute inset-0 z-50 bg-slate-900/50 p-6" id="contactModal">
+      <div class="flex h-full w-full items-center justify-center">
+        <div class="w-full max-w-[320px] rounded-3xl bg-white p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <h3 class="text-[15px] font-semibold text-slate-800">联系方式</h3>
+              <p class="mt-0.5 text-[11px] text-slate-400" id="modalSub">黑色长柄雨伞 · 招领</p>
+            </div>
+            <button class="flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-slate-500" onclick="closeContact()" type="button">
+              <iconify-icon class="text-base" icon="mdi:close"></iconify-icon>
+            </button>
+          </div>
+          <div class="mt-4 space-y-2.5">
+            <div class="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-3">
+              <iconify-icon class="text-lg text-blue-500" icon="mdi:phone-outline"></iconify-icon>
+              <div class="min-w-0 flex-1">
+                <p class="text-[10px] text-slate-400">手机号</p>
+                <p class="text-[13px] font-medium text-slate-800" id="modalPhone">138****6621</p>
+              </div>
+              <button class="rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-blue-600 ring-1 ring-slate-200" onclick="copyValue(this,'phone')" type="button">复制</button>
+            </div>
+            <div class="flex items-center gap-3 rounded-xl bg-slate-50 px-3 py-3">
+              <iconify-icon class="text-lg text-emerald-500" icon="mdi:wechat"></iconify-icon>
+              <div class="min-w-0 flex-1">
+                <p class="text-[10px] text-slate-400">微信号</p>
+                <p class="text-[13px] font-medium text-slate-800" id="modalWechat">umbrella_owner</p>
+              </div>
+              <button class="rounded-lg bg-white px-2.5 py-1 text-[11px] font-medium text-blue-600 ring-1 ring-slate-200" onclick="copyValue(this,'wechat')" type="button">复制</button>
+            </div>
+          </div>
+          <p class="mt-3 text-[11px] leading-relaxed text-slate-400" id="modalTip">
+            联系时请说明在失物招领平台看到该信息，并描述物品特征以便核实。请勿向对方转账。
+          </p>
+          <a class="mt-4 block w-full rounded-xl bg-slate-100 py-2.5 text-center text-[13px] font-medium text-slate-600" href="search.html">返回搜索看看其他信息</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 数据层/种子/工具 -->
+  <script src="js/store.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    var currentId = null;
+    var currentItem = null;
+
+    // 原来页内写死的 DATA 对象已经删掉，改为按 URL 里的 id 从 store 读真实数据
+    var params = new URLSearchParams(location.search);
+    var id = params.get('id');
+
+    initSeed(SEED_DATA);        // 直接打开详情页时也能保证有数据
+    var d = getById(id);
+
+    if (!d) {
+      // id 非法（比如 detail.html?id=999）时兜底跳回首页，不让用户看到空白页
+      location.href = 'index.html';
+      throw new Error('item not found');
+    }
+
+    currentId = d.id;
+    incrementViews(currentId);  // 浏览计数（附加特点）：同一会话只计一次
+    currentItem = getById(currentId);
+    applyData(currentItem);
+
+    // 字段适配：数据层的字段名（place/fullTime/desc/publisher/meta…）在这里映射到页面元素
+    function applyData(item) {
+      var box = document.getElementById('imageBox');
+      box.className = 'relative h-[248px] w-full overflow-hidden bg-gradient-to-br '
+        + (item.tone || 'from-slate-100 to-slate-200') + ' flex items-center justify-center';
+
+      var img = document.getElementById('itemImage');
+      img.setAttribute('alt', item.alt || item.title);
+      img.setAttribute('src', item.image || 'images/placeholder.svg');
+
+      var icon = document.getElementById('imageIcon');
+      icon.setAttribute('icon', item.icon || 'mdi:package-variant-closed');
+      icon.className = 'text-[86px] ' + (item.iconColor || 'text-slate-500/50');
+
+      var tb = document.getElementById('typeBadge');
+      if (item.type === 'lost') {
+        tb.textContent = '寻物';
+        tb.className = 'rounded-lg bg-orange-500 px-2 py-1 text-[11px] font-medium text-white';
+      } else {
+        tb.textContent = '招领';
+        tb.className = 'rounded-lg bg-emerald-500 px-2 py-1 text-[11px] font-medium text-white';
+      }
+
+      var sb = document.getElementById('statusBadge');
+      sb.textContent = item.status;
+      sb.className = (item.status === '待认领' || item.status === '寻找中')
+        ? 'rounded-lg bg-white/90 px-2 py-1 text-[11px] font-medium text-slate-700'
+        : 'rounded-lg bg-slate-700/85 px-2 py-1 text-[11px] font-medium text-white';
+
+      document.getElementById('itemTitle').textContent = item.title;
+      document.getElementById('publishTime').innerHTML =
+        '<iconify-icon icon="mdi:clock-outline" class="text-sm"></iconify-icon>'
+        + escapeHtml(item.time || (formatFullTime(item.fullTime) + ' 发布'));
+      document.getElementById('infoNoShort').textContent = '编号 ' + (item.no || '—');
+      document.getElementById('tipText').textContent = item.tip
+        || '该物品由发布者保管，认领时请说明物品特征，并在公共场所当面交接。';
+      document.getElementById('itemDesc').textContent = item.desc || '发布者暂未填写补充描述。';
+      document.getElementById('infoPlace').textContent = item.place || '—';
+      document.getElementById('infoTime').textContent = item.fullTime || '—';
+      document.getElementById('infoCategory').textContent = item.category || '其他';
+      document.getElementById('infoNo').textContent = item.no || '—';
+      document.getElementById('infoViews').textContent = formatViews(item.views);
+      document.getElementById('publisherName').textContent = item.publisher || '匿名同学';
+      document.getElementById('publisherMeta').textContent = item.meta || '未填写发布者信息';
+      document.getElementById('modalSub').textContent = item.title + ' · ' + (item.type === 'lost' ? '寻物' : '招领');
+      document.getElementById('modalPhone').textContent = item.phone || item.contact || '—';
+      document.getElementById('modalWechat').textContent = item.wechat || '—';
+    }
+
+    function toggleFav() {
+      var btn = document.getElementById('favBtn');
+      var icon = btn.querySelector('iconify-icon');
+      if (btn.getAttribute('data-fav') === '1') {
+        btn.setAttribute('data-fav', '0');
+        btn.className = 'flex w-14 flex-col items-center gap-0.5 rounded-xl py-1 text-slate-400';
+        icon.setAttribute('icon', 'mdi:heart-outline');
+      } else {
+        btn.setAttribute('data-fav', '1');
+        btn.className = 'flex w-14 flex-col items-center gap-0.5 rounded-xl py-1 text-rose-500';
+        icon.setAttribute('icon', 'mdi:heart');
+      }
+    }
+
+    function openContact() {
+      document.getElementById('contactModal').classList.remove('is-hidden');
+    }
+
+    function closeContact() {
+      document.getElementById('contactModal').classList.add('is-hidden');
+    }
+
+    function copyValue(btn, key) {
+      var item = getById(currentId) || currentItem;
+      var text = key === 'phone' ? (item.phone || item.contact) : item.wechat;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(String(text || '')).catch(function() {});
+      }
+      btn.textContent = '已复制';
+      btn.className = 'rounded-lg bg-emerald-50 px-2.5 py-1 text-[11px] font-medium text-emerald-600 ring-1 ring-emerald-100';
+    }
+  </script>
+</body>
+
+</html>
